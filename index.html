@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: #000; /* Black background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow: hidden; /* Prevent scrollbars */
+        }
+        .content-wrapper {
+            text-align: center;
+            padding: 2rem;
+            max-width: 90%; /* Responsive width */
+            width: 800px; /* Max width for desktop */
+            display: flex; /* Use flexbox for image arrangement */
+            flex-direction: column; /* Stack images vertically */
+            gap: 2rem; /* Space between images */
+        }
+        .logo {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem; /* Rounded corners for the image */
+            opacity: 0; /* Start hidden for initial animation */
+        }
+
+        /* Animation for the first logo - continuous bounce */
+        .logo-1 {
+            animation: bounceIn 1s ease-out forwards, continuousBounce 2s infinite alternate 1.5s;
+            /* initial bounceIn, then continuousBounce after a delay */
+            animation-delay: 0.5s; /* Initial delay for bounceIn */
+        }
+
+        /* Animation for the second logo - continuous pulse */
+        .logo-2 {
+            animation: bounceIn 1s ease-out forwards, continuousPulse 2s infinite ease-in-out 2s;
+            /* initial bounceIn, then continuousPulse after a delay */
+            animation-delay: 1s; /* Initial delay for bounceIn */
+        }
+
+        /* Keyframe for initial bounce in animation */
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05); /* Slightly larger for bounce effect */
+            }
+            70% {
+                transform: scale(0.9); /* Slightly smaller */
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1); /* Final size */
+            }
+        }
+
+        /* Keyframe for continuous bounce animation (for logo-1) */
+        @keyframes continuousBounce {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-10px); /* Move up slightly */
+            }
+        }
+
+        /* Keyframe for continuous pulse animation (for logo-2) */
+        @keyframes continuousPulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.03); /* Slightly enlarge */
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
+            .content-wrapper {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-black flex flex-col items-center justify-center min-h-screen p-4">
+    <div class="content-wrapper">
+        <!-- First Image (original logo) -->
+        <img src="/1.png"
+             alt="Website Logo 1"
+             class="logo logo-1 mx-auto rounded-lg"
+             onerror="this.onerror=null;this.src='https://placehold.co/400x100/333333/FFFFFF?text=Image+Error+1';">
+
+        <!-- Second Image (new placeholder for another image) -->
+        <img src="/2.png"
+             alt="Website Logo 2"
+             class="logo logo-2 mx-auto rounded-lg"
+             onerror="this.onerror=null;this.src='https://placehold.co/400x150/333333/FFFFFF?text=Image+Error+2';">
+    </div>
+</body>
+</html>
